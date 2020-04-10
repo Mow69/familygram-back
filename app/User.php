@@ -36,4 +36,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    // on récupère la liste des poste que le user a liké :
+    public function liked()
+    {
+        return $this->belongsToMany("App\User", "likes");
+    }
 }

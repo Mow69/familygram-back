@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// POSTS
+
+Route::get('/posts', 'PostsController@index');
+
+Route::get('/posts/{post}', 'PostsController@show');
+
+Route::post('/posts/{post}/like', 'PostsController@like');
+
+Route::post('/posts/{post}/unlike', 'PostsController@unlike');
+
+Route::get('/', 'PagesController@welcome');
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
